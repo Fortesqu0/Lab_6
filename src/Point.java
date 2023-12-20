@@ -6,10 +6,14 @@ public class Point {
     public static Point one_zero = new Point(1.0, 0.0);
 
 
-    public Point(double point_X, double point_Y) {
+    private Point(double point_X, double point_Y) {
         this.point_X = point_X;
         this.point_Y = point_Y;
 
+    }
+
+    public static Point of(double point_X, double point_Y){
+        return new Point(point_X, point_Y);
     }
 
     public double getPoint_X() {
@@ -33,8 +37,8 @@ public class Point {
         return new Point(-point_X, point_Y);
     }
 
-    public Point rotate(int degree){
-        double rad_degree = degree * (Math.PI/180);
+    public Point rotate(int degree) {
+        double rad_degree = degree * (Math.PI / 180);
         double rotated_x = point_X * Math.cos(rad_degree) - point_Y * Math.sin(rad_degree);
         double rotated_y = point_X * Math.sin(rad_degree) + point_Y * Math.cos(rad_degree);
         double rounded_rotated_x = Math.round(rotated_x * 10.0) / 10.0;
