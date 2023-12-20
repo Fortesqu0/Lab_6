@@ -20,8 +20,26 @@ public class Point {
         return point_Y;
     }
 
-    public void move(double vx, double vy) {
+    public Point move(double vx, double vy) {
+        return new Point(point_X + vx, point_Y + vy);
 
+    }
+
+    public Point symmetryOx() {
+        return new Point(point_X, -point_Y);
+    }
+
+    public Point symmetryOy() {
+        return new Point(-point_X, point_Y);
+    }
+
+    public Point rotate(int degree){
+        double rad_degree = degree * (Math.PI/180);
+        double rotated_x = point_X * Math.cos(rad_degree) - point_Y * Math.sin(rad_degree);
+        double rotated_y = point_X * Math.sin(rad_degree) + point_Y * Math.cos(rad_degree);
+        double rounded_rotated_x = Math.round(rotated_x * 10.0) / 10.0;
+        double rounded_rotated_y = Math.round(rotated_y * 10.0) / 10.0;
+        return new Point(rounded_rotated_x, rounded_rotated_y);
 
     }
 
